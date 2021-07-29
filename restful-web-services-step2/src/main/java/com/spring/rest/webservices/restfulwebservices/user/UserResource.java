@@ -29,21 +29,6 @@ public class UserResource {
 		return service.findOne(id);
 	}
 	
-	//input - details of user
-	//output - CREATED & return the created URI
-	@PostMapping("/users")
-	public ResponseEntity<Object> createUser(@RequestBody User user) {
-		User savedUser = service.save(user);
-		//CREATED
-		// /user/{id}   savedUser.getId()
-		
-		URI location = ServletUriComponentsBuilder
-			.fromCurrentRequest()
-			.path("/{id}")
-			.buildAndExpand(savedUser.getId()).toUri();
-		
-		return ResponseEntity.created(location).build();
-	}
 }
 
 
